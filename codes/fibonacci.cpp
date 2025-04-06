@@ -20,14 +20,14 @@ int* fibonacci(int n){
 
 int main(){
 	int n = 20;
-	int* fib_array = fibonacci(n);
+	int* p_fib = fibonacci(n);
 
-	if(fib_array){
+	if(p_fib){
 		std::cout << "Fibonacci Sequence:" << std::endl;
 		for(int i = 0; i < n; i++){
-			std::cout << fib_array[i] << std::endl;
+			std::cout << p_fib[i] << std::endl;
 		}
-		delete[] fib_array;
+		delete[] p_fib;
 	}
 	else{
 		std::cout << "Memory allocation failed!";
