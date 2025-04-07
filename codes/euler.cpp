@@ -18,8 +18,8 @@ std::vector<float> euler(float y0, float t0, std::function<float(float, float)> 
     return y;  
 }
 
-float malthus(float y, float t){
-	return 1.0f * y;
+float malthus(float y, float t, float k){
+	return k * y;
 }
 
 int main(){
@@ -27,12 +27,17 @@ int main(){
     float t0 = 0.0f;
     float h = 0.1f;
     int n = 100;
+    float k = 1.f;
 
-    std::vector<float> solution = euler(y0, t0, malthus, n, h);
+    auto malthus_args = [k](float y, float t){
+	    return malthus(y, t, k); 
+    };
+	
+    std::vector<float> solution = euler(y0, t0, malthus_k, n, h);
 
     if(!solution.empty()){
         std::cout << "Euler Solution: " << solution.back() << std::endl;
-        std::cout << "Exact Solution: " << std::exp(float(n*h)) << std::endl;
+        std::cout << "Exact Solution: " << y0 * std::exp(float(k * n * h)) << std::endl;
 
         for(float y : solution){
             std::cout << y << std::endl;
