@@ -25,7 +25,7 @@ float malthus(float y, float t, float k){
 int main(){
     float y0 = 1.0f;
     float t0 = 0.0f;
-    float h = 0.1f;
+    float h = 0.01f;
     int n = 100;
     float k = 1.f;
 
@@ -33,7 +33,7 @@ int main(){
 	    return malthus(y, t, k); 
     };
 	
-    std::vector<float> solution = euler(y0, t0, malthus_k, n, h);
+    std::vector<float> solution = euler(y0, t0, malthus_args, n, h);
 
     if(!solution.empty()){
         std::cout << "Euler Solution: " << solution.back() << std::endl;
